@@ -246,23 +246,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <!-- ── KITCHEN / CATEGORY SELECTOR ── -->
 <div class="selector-overlay" id="selectorOverlay">
-  <div class="sel-logo">🏥 FOOD TEMP LOG</div>
+  <div class="sel-logo">🏥 CCP Records</div>
   <div class="sel-date" id="selectorDate"></div>
 
   <div class="sel-step" id="stepKitchen">
     <div class="sel-title">Which kitchen are you in?</div>
     <div class="sel-sub">Select your station before logging</div>
-    <div class="sel-grid two">
-      <div class="sel-card" id="card-chinese" onclick="selectKitchen('chinese')">
-        <div class="sc-icon">🥢</div>
-        <div class="sc-label">Chinese Kitchen</div>
-        <div class="sc-sub">Non-halal items</div>
+    <div class="sel-grid four">
+      <div class="sel-card" id="card- MBchinese" onclick="selectKitchen('MBchinese')">
+        <div class="sc-icon">🍎</div>
+        <div class="sc-label">MB Chinese Kitchen</div>
       </div>
-      <div class="sel-card" id="card-halal" onclick="selectKitchen('halal')">
-        <div class="sc-icon">☪️</div>
-        <div class="sc-label">Halal Kitchen</div>
-        <div class="sc-sub">Halal-certified items</div>
+      <div class="sel-card" id="card-MB halal" onclick="selectKitchen('MBhalal')">
+        <div class="sc-icon">🍏</div>
+        <div class="sc-label">MB Halal Kitchen</div>
       </div>
+    <div class="sel-card" id="card-IBchinese" onclick="selectKitchen('IBchinese')">
+        <div class="sc-icon">🍎</div>
+        <div class="sc-label">IB Chinese Kitchen</div>
+      </div>
+      <div class="sel-card" id="card-IBhalal" onclick="selectKitchen('IBhalal')">
+        <div class="sc-icon">🍏</div>
+        <div class="sc-label">IB Halal Kitchen</div>
+        </div>
     </div>
   </div>
 
@@ -303,7 +309,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <!-- ── HEADER ── -->
 <div class="header">
   <div class="header-top">
-    <div class="logo">🏥 FOOD TEMP <span class="logo-badge">HEALTHCARE</span></div>
+    <div class="logo">🏥 CCP Records <span class="logo-badge">CGH</span></div>
     <div style="display:flex;align-items:center;gap:8px;">
       <div class="sync-pill" id="syncPill"></div>
       <div class="date-chip" id="dateChip"></div>
@@ -588,46 +594,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 // ══════════════════════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════════════════════
-const DEFAULT_DISHES = [
-  {id:1,  name:'Chicken Rice',     icon:'🍚', min:65, max:200},
-  {id:2,  name:'Beef Stew',        icon:'🥩', min:65, max:200},
-  {id:3,  name:'Fish Fillet',      icon:'🐟', min:65, max:200},
-  {id:4,  name:'Mixed Vegetables', icon:'🥦', min:65, max:200},
-  {id:5,  name:'Fried Rice',       icon:'🍳', min:65, max:200},
-  {id:6,  name:'Soup of the Day',  icon:'🍲', min:75, max:200},
-  {id:7,  name:'Pasta',            icon:'🍝', min:65, max:200},
-  {id:8,  name:'Roast Potatoes',   icon:'🥔', min:65, max:200},
-  {id:9,  name:'Egg Omelette',     icon:'🍳', min:65, max:200},
-  {id:10, name:'Spring Rolls',     icon:'🥢', min:65, max:200},
-  {id:11, name:'Coleslaw',         icon:'🥗', min:0,  max:8 },
-  {id:12, name:'Fruit Salad',      icon:'🍓', min:0,  max:8 },
-  {id:13, name:'Yoghurt',          icon:'🥛', min:0,  max:5 },
-  {id:14, name:'Caesar Salad',     icon:'🥬', min:0,  max:8 },
-  {id:15, name:'Potato Salad',     icon:'🥙', min:0,  max:8 },
-  {id:16, name:'Bread Rolls',      icon:'🍞', min:18, max:30},
-  {id:17, name:'Dim Sum',          icon:'🥟', min:65, max:200},
-  {id:18, name:'Laksa',            icon:'🍜', min:75, max:200},
-  {id:19, name:'BBQ Pork',         icon:'🍖', min:65, max:200},
-  {id:20, name:'Tofu Dish',        icon:'🧆', min:65, max:200},
-  {id:21, name:'Nasi Lemak',       icon:'🌿', min:65, max:200},
-  {id:22, name:'Curry',            icon:'🫕', min:75, max:200},
-  {id:23, name:'Steamed Fish',     icon:'🐠', min:65, max:200},
-  {id:24, name:'Chilled Dessert',  icon:'🍮', min:0,  max:8 },
-  {id:25, name:'Ice Cream',        icon:'🍦', min:-18,max:-10},
-  {id:26, name:'Wonton Noodles',   icon:'🍥', min:65, max:200},
-  {id:27, name:'Duck Rice',        icon:'🦆', min:65, max:200},
-  {id:28, name:'Prawn Dish',       icon:'🍤', min:65, max:200},
-  {id:29, name:'Fried Chicken',    icon:'🍗', min:75, max:200},
-  {id:30, name:'Mixed Rice',       icon:'🍱', min:65, max:200},
-];
-
 const MEALS       = ['breakfast','lunch','dinner'];
 const MEAL_LABELS = {breakfast:'Breakfast', lunch:'Lunch', dinner:'Dinner'};
 const MENU_LABELS = {1:'Menu A', 2:'Menu B'};
 
 const KITCHENS = {
-  chinese: {label:'Chinese Kitchen', icon:'🥢'},
-  halal:   {label:'Halal Kitchen',   icon:'☪️'}
+  MBchinese: {label:'MB Chinese Kitchen', icon:'🍎'},
+  MBhalal:   {label:'MB Halal Kitchen',   icon:'🍏'}
+  IBchinese: {label:'IB Chinese Kitchen', icon:'🍎'},
+  IBhalal:   {label:'IB Halal Kitchen',   icon:'🍏'}
 };
 const CATEGORIES = {
   cooking:     {label:'Cooking Temp',     icon:'🔥', min:75, desc:'All hot food must reach ≥75°C'},
@@ -639,7 +614,7 @@ const SETTINGS_KEY = 'hc_settings_v2';
 
 let allRecords    = {};
 let appSettings   = {};
-let MEAL_WINDOWS  = {breakfast:{start:6,end:10}, lunch:{start:11,end:14}, dinner:{start:17,end:21}};
+let MEAL_WINDOWS  = {breakfast:{start:5,end:10}, lunch:{start:10,end:14}, dinner:{start:15,end:19}};
 
 let currentMeal     = null;
 let currentDish     = null;
@@ -678,31 +653,6 @@ function getDishesForMealDate(meal, dateKey) {
 
 function getTodayDishes(meal) {
   return getDishesForMealDate(meal, todayKey());
-}
-
-function dishIcon(name) {
-  const n = name.toLowerCase();
-  if (n.includes('rice')) return '🍚';
-  if (n.includes('soup')||n.includes('broth')) return '🍲';
-  if (n.includes('noodle')||n.includes('mee')||n.includes('pasta')||n.includes('laksa')) return '🍜';
-  if (n.includes('fish')||n.includes('salmon')) return '🐟';
-  if (n.includes('chicken')||n.includes('poultry')) return '🍗';
-  if (n.includes('beef')||n.includes('lamb')||n.includes('mutton')) return '🥩';
-  if (n.includes('pork')||n.includes('bbq')) return '🍖';
-  if (n.includes('prawn')||n.includes('shrimp')) return '🍤';
-  if (n.includes('veg')) return '🥦';
-  if (n.includes('salad')) return '🥗';
-  if (n.includes('egg')||n.includes('omelette')) return '🍳';
-  if (n.includes('bread')||n.includes('roll')) return '🍞';
-  if (n.includes('fruit')) return '🍓';
-  if (n.includes('yoghurt')||n.includes('dairy')) return '🥛';
-  if (n.includes('dessert')||n.includes('pudding')||n.includes('jelly')) return '🍮';
-  if (n.includes('ice cream')) return '🍦';
-  if (n.includes('curry')) return '🫕';
-  if (n.includes('dim sum')||n.includes('dumpling')) return '🥟';
-  if (n.includes('tofu')) return '🧆';
-  if (n.includes('duck')) return '🦆';
-  return '🍽';
 }
 
 // Effective min temp for a dish based on current category
@@ -787,7 +737,7 @@ let _selKitchen = null, _selCategory = null;
 
 function showSelector() {
   _selKitchen = null; _selCategory = null;
-  ['card-chinese','card-halal','card-cooking','card-hotholding'].forEach(id => document.getElementById(id)?.classList.remove('selected'));
+  ['card-MBchinese','card-MBhalal','card-IBchinese','card-IBhalal','card-cooking','card-hotholding'].forEach(id => document.getElementById(id)?.classList.remove('selected'));
   document.getElementById('selectorOverlay').classList.remove('hidden');
   showSelStep('stepKitchen');
 }
